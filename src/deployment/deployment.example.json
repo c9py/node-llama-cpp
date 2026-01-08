@@ -1,0 +1,45 @@
+{
+  "name": "llama-distributed-deployment",
+  "modulePath": "/dis/deployment/llamacpp.dis",
+  "modelPath": "/path/to/your/model.gguf",
+  "network": {
+    "loadBalancing": "round-robin",
+    "healthCheckInterval": 30000,
+    "requestTimeout": 60000,
+    "enableFailover": true,
+    "basePort": 8000
+  },
+  "nodes": [
+    {
+      "id": "node-0",
+      "address": "localhost",
+      "port": 8000,
+      "weight": 1.0,
+      "gpuLayers": 0,
+      "contextSize": 2048
+    },
+    {
+      "id": "node-1",
+      "address": "localhost",
+      "port": 8001,
+      "weight": 1.0,
+      "gpuLayers": 0,
+      "contextSize": 2048
+    },
+    {
+      "id": "node-2",
+      "address": "localhost",
+      "port": 8002,
+      "weight": 1.0,
+      "gpuLayers": 0,
+      "contextSize": 2048
+    }
+  ],
+  "model": {
+    "contextSize": 2048,
+    "gpuLayers": 0,
+    "batchSize": 512,
+    "threads": 4,
+    "mlock": false
+  }
+}

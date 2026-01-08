@@ -91,6 +91,14 @@ import {
 } from "./utils/createModelDownloader.js";
 import {jsonDumps} from "./chatWrappers/utils/jsonDumps.js";
 import {experimentalChunkDocument} from "./evaluator/utils/chunkDocument.js";
+import {
+    LimboDeploymentManager, DeploymentStatus, createDeploymentFromConfig,
+    type LimboDeploymentConfig, type NetworkConfig, type NodeConfig, type ModelConfig,
+    DEFAULT_DEPLOYMENT_CONFIG, validateDeploymentConfig, mergeWithDefaults, generateNodeConfigs,
+    NetworkCoordinator, LoadBalancingStrategy, type NetworkCoordinatorConfig, type NetworkNode,
+    type InferenceRequest, type InferenceResponse,
+    DisVMManager, DisVMIsolate, type DisVMIsolateConfig
+} from "./deployment/index.js";
 
 import {
     type ChatHistoryItem, type ChatModelFunctionCall, type ChatModelSegmentType, type ChatModelSegment, type ChatModelFunctions,
@@ -327,5 +335,25 @@ export {
     type CombinedModelDownloaderOptions,
     jsonDumps,
     type OverridesObject,
-    experimentalChunkDocument
+    experimentalChunkDocument,
+    LimboDeploymentManager,
+    DeploymentStatus,
+    createDeploymentFromConfig,
+    type LimboDeploymentConfig,
+    type NetworkConfig,
+    type NodeConfig,
+    type ModelConfig,
+    DEFAULT_DEPLOYMENT_CONFIG,
+    validateDeploymentConfig,
+    mergeWithDefaults,
+    generateNodeConfigs,
+    NetworkCoordinator,
+    LoadBalancingStrategy,
+    type NetworkCoordinatorConfig,
+    type NetworkNode,
+    type InferenceRequest,
+    type InferenceResponse,
+    DisVMManager,
+    DisVMIsolate,
+    type DisVMIsolateConfig
 };

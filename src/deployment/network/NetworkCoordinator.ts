@@ -238,17 +238,17 @@ export class NetworkCoordinator extends EventEmitter {
     private selectRoundRobin(nodes: NetworkNode[]): NetworkNode {
         const node = nodes[this.roundRobinIndex % nodes.length];
         this.roundRobinIndex++;
-        return node;
+        return node!;
     }
     
     private selectLeastConnections(nodes: NetworkNode[]): NetworkNode {
         return nodes.reduce((least, current) =>
             current.connections < least.connections ? current : least
-        );
+        )!;
     }
     
     private selectRandom(nodes: NetworkNode[]): NetworkNode {
-        return nodes[Math.floor(Math.random() * nodes.length)];
+        return nodes[Math.floor(Math.random() * nodes.length)]!;
     }
     
     private selectWeightedRandom(nodes: NetworkNode[]): NetworkNode {
@@ -262,7 +262,7 @@ export class NetworkCoordinator extends EventEmitter {
             }
         }
         
-        return nodes[0];
+        return nodes[0]!;
     }
     
     /**

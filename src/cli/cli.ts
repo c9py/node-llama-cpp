@@ -17,7 +17,7 @@ import {InfillCommand} from "./commands/InfillCommand.js";
 import {InspectCommand} from "./commands/inspect/InspectCommand.js";
 import {OnPostInstallCommand} from "./commands/OnPostInstallCommand.js";
 import {DebugCommand} from "./commands/DebugCommand.js";
-import {createDeployCommand} from "./commands/DeployCommand.js";
+import {DeployCommand} from "./commands/DeployCommand.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -39,7 +39,7 @@ yarg
     .command(InspectCommand)
     .command(OnPostInstallCommand)
     .command(DebugCommand)
-    .command(createDeployCommand())
+    .command(DeployCommand)
     .recommendCommands()
     .demandCommand(1)
     .strict()

@@ -215,9 +215,12 @@ export class LimboDeploymentManager extends EventEmitter {
             console.log(`Scaling down: removing ${nodesToRemove} nodes`);
             
             for (let i = 0; i < nodesToRemove; i++) {
-                const nodeId = this.config.nodes[currentNodeCount - 1 - i].id;
-                await this.coordinator.removeNode(nodeId);
-                console.log(`  ✓ Node ${nodeId} removed`);
+                const nodeConfig = this.config.nodes[currentNodeCount - 1 - i];
+                if (nodeConfig) {
+                    const nodeId = nodeConfig.id;
+                    await this.coordinator.removeNode(nodeId);
+                    console.log(`  ✓ Node ${nodeId} removed`);
+                }
             }
         }
         

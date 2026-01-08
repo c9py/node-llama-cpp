@@ -13,11 +13,14 @@ export {
     createDeploymentFromConfig
 } from "./LimboDeploymentManager.js";
 
-export {
+export type {
     LimboDeploymentConfig,
     NetworkConfig,
     NodeConfig,
-    ModelConfig,
+    ModelConfig
+} from "./DeploymentConfig.js";
+
+export {
     DEFAULT_DEPLOYMENT_CONFIG,
     validateDeploymentConfig,
     mergeWithDefaults,
@@ -26,7 +29,10 @@ export {
 
 export {
     NetworkCoordinator,
-    LoadBalancingStrategy,
+    LoadBalancingStrategy
+} from "./network/NetworkCoordinator.js";
+
+export type {
     NetworkCoordinatorConfig,
     NetworkNode,
     InferenceRequest,
@@ -35,6 +41,9 @@ export {
 
 export {
     DisVMManager,
-    DisVMIsolate,
+    DisVMIsolate
+} from "./dis-vm/DisVMManager.js";
+
+export type {
     DisVMIsolateConfig
 } from "./dis-vm/DisVMManager.js";

@@ -87,6 +87,8 @@ async function main() {
         
         for (let i = 0; i < prompts.length; i++) {
             const prompt = prompts[i];
+            if (!prompt) continue;
+            
             console.log(`Request ${i + 1}: ${prompt}`);
             
             const result = await manager.evaluate(prompt, {

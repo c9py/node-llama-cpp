@@ -129,7 +129,6 @@ async function main() {
         console.log("Shutting down deployment...");
         await manager.shutdown();
         console.log("✓ Deployment shut down successfully");
-        
     } catch (error) {
         console.error("Error:", error);
         await manager.shutdown();

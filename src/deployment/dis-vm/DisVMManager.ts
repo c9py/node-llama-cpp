@@ -15,22 +15,22 @@ import {EventEmitter} from "events";
  */
 export interface DisVMIsolateConfig {
     /** Unique identifier for this isolate */
-    isolateId: string;
+    isolateId: string,
     
     /** Path to the Limbo module (.dis file) */
-    modulePath: string;
+    modulePath: string,
     
     /** Network address for this isolate */
-    address?: string;
+    address?: string,
     
     /** Network port for this isolate */
-    port?: number;
+    port?: number,
     
     /** Environment variables for the isolate */
-    env?: Record<string, string>;
+    env?: Record<string, string>,
     
     /** Working directory for the isolate */
-    cwd?: string;
+    cwd?: string
 }
 
 /**
@@ -117,7 +117,7 @@ export class DisVMIsolate extends EventEmitter {
     /**
      * Get the status of the isolate
      */
-    getStatus(): {isolateId: string; isRunning: boolean; config: DisVMIsolateConfig} {
+    getStatus(): {isolateId: string, isRunning: boolean, config: DisVMIsolateConfig} {
         return {
             isolateId: this.config.isolateId,
             isRunning: this.isRunning,
@@ -190,7 +190,7 @@ export class DisVMManager extends EventEmitter {
      */
     async stopAll(): Promise<void> {
         const promises = Array.from(this.isolates.values()).map(
-            isolate => isolate.stop()
+            (isolate) => isolate.stop()
         );
         
         await Promise.all(promises);

@@ -11,22 +11,22 @@ import {LoadBalancingStrategy} from "./network/NetworkCoordinator.js";
  */
 export interface LimboDeploymentConfig {
     /** Deployment name/identifier */
-    name: string;
+    name: string,
     
     /** Path to the Limbo module (.b or .dis file) */
-    modulePath: string;
+    modulePath: string,
     
     /** Path to the GGUF model file */
-    modelPath: string;
+    modelPath: string,
     
     /** Network configuration */
-    network: NetworkConfig;
+    network: NetworkConfig,
     
     /** Node configurations */
-    nodes: NodeConfig[];
+    nodes: NodeConfig[],
     
     /** Model configuration */
-    model: ModelConfig;
+    model: ModelConfig
 }
 
 /**
@@ -34,19 +34,19 @@ export interface LimboDeploymentConfig {
  */
 export interface NetworkConfig {
     /** Load balancing strategy */
-    loadBalancing: LoadBalancingStrategy;
+    loadBalancing: LoadBalancingStrategy,
     
     /** Health check interval in milliseconds */
-    healthCheckInterval: number;
+    healthCheckInterval: number,
     
     /** Request timeout in milliseconds */
-    requestTimeout: number;
+    requestTimeout: number,
     
     /** Enable automatic failover */
-    enableFailover: boolean;
+    enableFailover: boolean,
     
     /** Base port for nodes (each node will increment) */
-    basePort: number;
+    basePort: number
 }
 
 /**
@@ -54,22 +54,22 @@ export interface NetworkConfig {
  */
 export interface NodeConfig {
     /** Node identifier */
-    id: string;
+    id: string,
     
     /** Network address */
-    address: string;
+    address: string,
     
     /** Network port */
-    port: number;
+    port: number,
     
     /** Node weight for weighted load balancing */
-    weight?: number;
+    weight?: number,
     
     /** GPU layers to offload (-1 for all) */
-    gpuLayers?: number;
+    gpuLayers?: number,
     
     /** Context size for this node */
-    contextSize?: number;
+    contextSize?: number
 }
 
 /**
@@ -77,19 +77,19 @@ export interface NodeConfig {
  */
 export interface ModelConfig {
     /** Default context size */
-    contextSize: number;
+    contextSize: number,
     
     /** Default GPU layers */
-    gpuLayers: number;
+    gpuLayers: number,
     
     /** Batch size */
-    batchSize: number;
+    batchSize: number,
     
     /** Number of threads */
-    threads: number;
+    threads: number,
     
     /** Enable memory locking */
-    mlock: boolean;
+    mlock: boolean
 }
 
 /**

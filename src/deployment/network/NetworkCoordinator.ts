@@ -23,47 +23,47 @@ export enum LoadBalancingStrategy {
  */
 export interface NetworkCoordinatorConfig {
     /** Load balancing strategy */
-    strategy: LoadBalancingStrategy;
+    strategy: LoadBalancingStrategy,
     
     /** Health check interval in milliseconds */
-    healthCheckInterval?: number;
+    healthCheckInterval?: number,
     
     /** Request timeout in milliseconds */
-    requestTimeout?: number;
+    requestTimeout?: number,
     
     /** Enable automatic failover */
-    enableFailover?: boolean;
+    enableFailover?: boolean
 }
 
 /**
  * Node information in the distributed network
  */
 export interface NetworkNode {
-    isolateId: string;
-    address: string;
-    port: number;
-    isHealthy: boolean;
-    connections: number;
-    weight: number;
+    isolateId: string,
+    address: string,
+    port: number,
+    isHealthy: boolean,
+    connections: number,
+    weight: number
 }
 
 /**
  * Inference request
  */
 export interface InferenceRequest {
-    requestId: string;
-    prompt: string;
-    options?: Record<string, any>;
+    requestId: string,
+    prompt: string,
+    options?: Record<string, any>
 }
 
 /**
  * Inference response
  */
 export interface InferenceResponse {
-    requestId: string;
-    nodeId: string;
-    result: string;
-    timestamp: number;
+    requestId: string,
+    nodeId: string,
+    result: string,
+    timestamp: number
 }
 
 /**
@@ -210,7 +210,7 @@ export class NetworkCoordinator extends EventEmitter {
      */
     private selectNode(): NetworkNode | null {
         const healthyNodes = Array.from(this.nodes.values()).filter(
-            node => node.isHealthy
+            (node) => node.isHealthy
         );
         
         if (healthyNodes.length === 0) {
@@ -243,7 +243,7 @@ export class NetworkCoordinator extends EventEmitter {
     
     private selectLeastConnections(nodes: NetworkNode[]): NetworkNode {
         return nodes.reduce((least, current) =>
-            current.connections < least.connections ? current : least
+            (current.connections < least.connections ? current : least)
         )!;
     }
     
@@ -301,15 +301,15 @@ export class NetworkCoordinator extends EventEmitter {
      * Get network status
      */
     getStatus(): {
-        totalNodes: number;
-        healthyNodes: number;
-        strategy: LoadBalancingStrategy;
-        nodes: NetworkNode[];
+        totalNodes: number,
+        healthyNodes: number,
+        strategy: LoadBalancingStrategy,
+        nodes: NetworkNode[]
     } {
         const nodes = Array.from(this.nodes.values());
         return {
             totalNodes: nodes.length,
-            healthyNodes: nodes.filter(n => n.isHealthy).length,
+            healthyNodes: nodes.filter((n) => n.isHealthy).length,
             strategy: this.config.strategy,
             nodes
         };

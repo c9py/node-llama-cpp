@@ -1,20 +1,19 @@
 /**
  * Deploy Command
- * 
+ *
  * CLI command for managing Limbo/Inferno Dis-VM distributed deployments
  */
 
-import type {CommandModule} from "yargs";
 import * as path from "path";
 import chalk from "chalk";
 import {
-    LimboDeploymentManager,
     createDeploymentFromConfig,
     DeploymentStatus,
     generateNodeConfigs,
     type LimboDeploymentConfig,
     LoadBalancingStrategy
 } from "../../deployment/index.js";
+import type {CommandModule} from "yargs";
 
 interface DeployCommandOptions {
     config?: string;

@@ -231,9 +231,9 @@ export class LimboDeploymentManager extends EventEmitter {
      * Get deployment status
      */
     getStatus(): {
-        name: string;
-        status: DeploymentStatus;
-        network?: ReturnType<NetworkCoordinator["getStatus"]>;
+        name: string,
+        status: DeploymentStatus,
+        network?: ReturnType<NetworkCoordinator["getStatus"]>
     } {
         return {
             name: this.config.name,
